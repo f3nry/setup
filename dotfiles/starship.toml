@@ -1,0 +1,84 @@
+# ══════════════════════════════════════════════════
+# starship.toml — managed by mac-dev-setup
+# Catppuccin Mocha theme
+# ══════════════════════════════════════════════════
+
+format = """
+[](fg:#89b4fa)\
+$os\
+$directory\
+$git_branch\
+$git_status\
+[](fg:#89b4fa bg:#a6e3a1)\
+$python\
+$conda\
+$golang\
+$ruby\
+$nodejs\
+$docker_context\
+[](fg:#a6e3a1)\
+$cmd_duration\
+$line_break\
+$character"""
+
+[os]
+disabled = false
+style = "bg:#89b4fa fg:#1e1e2e"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Macos = ""
+
+[directory]
+style = "bg:#89b4fa fg:#1e1e2e bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+style = "bg:#89b4fa fg:#1e1e2e"
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[git_status]
+style = "bg:#89b4fa fg:#1e1e2e"
+format = "[$all_status$ahead_behind]($style)"
+
+[python]
+style = "bg:#a6e3a1 fg:#1e1e2e"
+format = "[ $symbol$version( \\($virtualenv\\)) ]($style)"
+symbol = " "
+
+[conda]
+style = "bg:#a6e3a1 fg:#1e1e2e"
+format = "[ $symbol$environment ]($style)"
+symbol = " "
+
+[golang]
+style = "bg:#a6e3a1 fg:#1e1e2e"
+format = "[ $symbol$version ]($style)"
+symbol = " "
+
+[ruby]
+style = "bg:#a6e3a1 fg:#1e1e2e"
+format = "[ $symbol$version ]($style)"
+symbol = " "
+
+[nodejs]
+style = "bg:#a6e3a1 fg:#1e1e2e"
+format = "[ $symbol$version ]($style)"
+symbol = " "
+
+[docker_context]
+style = "bg:#a6e3a1 fg:#1e1e2e"
+format = "[ $symbol$context ]($style)"
+symbol = " "
+
+[cmd_duration]
+min_time = 2_000
+style = "fg:#f9e2af"
+format = " took [$duration]($style)"
+
+[character]
+success_symbol = "[❯](bold #a6e3a1)"
+error_symbol = "[❯](bold #f38ba8)"

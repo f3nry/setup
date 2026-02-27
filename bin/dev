@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# bin/dev — Launch a dev tmux session
+# Usage: dev [session-name] [project-dir]
+
+set -euo pipefail
+
+SESSION="${1:-dev}"
+PROJECT_DIR="${2:-$(pwd)}"
+
+# If session exists, attach to it
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+  echo "Attaching to existing session: $SESSION"
+  tmux attach -t "$SESSION"
+  exit 0
+fi
+
+# Create new session
+tmux new-session -d -s "$SESSION" -n "code" -c "$PROJECT_DIR"
+tmux send-keys -t "$SESSION:code" "nvim ." C-m
+
+tmux new-window -t "$SESSION" -n "server" -c "$PROJECT_DIR"
+
+tmux new-window -t "$SESSION" -n "docker" -c "$PROJECT_DIR"
+tmux send-keys -t "$SESSION:docker" "docker ps 2>/dev/null || echo 'Docker not running'" C-m
+
+tmux new-window -t "$SESSION" -n "shell" -c "$PROJECT_DIR"
+
+tmux select-window -t "$SESSION:code"
+tmux attach -t "$SESSION"
