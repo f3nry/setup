@@ -36,6 +36,7 @@ cask_app_path() {
     linear-linear)        echo "/Applications/Linear.app" ;;
     the-unarchiver)       echo "/Applications/The Unarchiver.app" ;;
     vlc)                  echo "/Applications/VLC.app" ;;
+    ollama)               echo "/Applications/Ollama.app" ;;
     *)                    echo "" ;;
   esac
 }

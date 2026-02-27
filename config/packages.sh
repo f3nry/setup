@@ -49,6 +49,7 @@ BREW_CASKS=(
   visual-studio-code
   docker
   anaconda
+  ollama
   font-jetbrains-mono-nerd-font
 )
 
